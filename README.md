@@ -287,3 +287,57 @@ private void Speak(string text)
     if (_speechSynthesizer == null) return; // Silent fail if no device
     try { _speechSynthesizer.SpeakAsync(text); } catch { }
 }
+private void AppendBotMessage(string message, SolidColorBrush color, bool log)
+{
+    Dispatcher.Invoke(() => {
+        TextRange tr = new TextRange(ChatDisplay.Document.ContentEnd, ChatDisplay.Document.ContentEnd);
+        tr.Text = "🤖 CyberGuard » " + message + "\n\n";
+        tr.ApplyPropertyValue(TextElement.ForegroundProperty, color);
+        ChatDisplay.ScrollToEnd();
+        if (log) _botEngine.LogMessage("CyberGuard", message);
+    });
+}
+private void AppendUserMessage(string message)
+{
+    Dispatcher.Invoke(() => {
+        TextRange tr = new TextRange(ChatDisplay.Document.ContentEnd, ChatDisplay.Document.ContentEnd);
+        tr.Text = "👤 You » " + message + "\n\n";
+        tr.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.LightGreen);
+        ChatDisplay.ScrollToEnd();
+        _botEngine.LogMessage(_botEngine.UserName ?? "User", message);
+    });
+}
+private void ChatHistoryButton_Click(object sender, RoutedEventArgs e)
+{
+    string fullHistory = _botEngine.GetFullChatHistory();
+    Window historyWindow = new Window
+    {
+        Title = "Full Chat History Report",
+        Width = 600,
+        Height = 500,
+        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+        Background = new SolidColorBrush(Color.FromRgb(30, 30, 30))
+    };
+    historyWindow.ShowDialog();
+}
+TextBox historyBox = new TextBox
+{
+    Text = fullHistory,
+    IsReadOnly = true,
+    VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+    Background = new SolidColorBrush(Color.FromRgb(45, 45, 48)),
+    Foreground = Brushes.LightGray,
+    FontFamily = new FontFamily("Consolas"),
+    Padding = new Thickness(10),
+    TextWrapping = TextWrapping.Wrap
+};
+historyWindow.Content = historyBox;
+public string GetFullChatHistory()
+{
+    return string.Join("\n", _history.Select(h => $"[{h.Timestamp:HH:mm:ss}] {h.Sender}: {h.Message}"));
+}
+private void AppendBotMessage(string message, SolidColorBrush color, bool log)
+{
+    // ... append logic ...
+    ChatDisplay.ScrollToEnd();
+}
