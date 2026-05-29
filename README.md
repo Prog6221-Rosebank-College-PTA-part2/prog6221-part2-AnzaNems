@@ -164,3 +164,81 @@ public void LogMessage(string sender, string message)
 {
     _history.Add(new ChatMessage { Sender = sender, Message = message, Timestamp = DateTime.Now });
 }
+public MainWindow()
+{
+    InitializeComponent();
+    _botEngine = new CyberBotEngine();
+    
+    try
+    {
+        _speechSynthesizer = new SpeechSynthesizer();
+        _speechSynthesizer.SetOutputToDefaultAudioDevice();
+    }
+    catch { _speechSynthesizer = null; }
+
+    DisplayWelcomeScreen();
+    ToggleChatControls(false);
+}
+private void btnStart_Click(object sender, RoutedEventArgs e)
+{
+    string name = UserNameTextBox.Text.Trim();
+    if (string.IsNullOrWhiteSpace(name) || !Regex.IsMatch(name, "^[a-zA-Z][a-zA-Z ]*$"))
+    {
+        NameErrorTextBlock.Text = "Please enter a valid name (letters only).";
+        Speak("Please enter a valid name.");
+    }
+    else
+    {
+        _botEngine.UserName = name;
+        NameEntrySection.Visibility = Visibility.Collapsed;
+        ToggleChatControls(true);
+        AppendBotMessage($"Hello {_botEngine.UserName}!", Brushes.Cyan, true);
+    }
+}
+private void ProcessInput()
+{
+    string input = UserInputTextBox.Text.Trim();
+    if (string.IsNullOrWhiteSpace(input)) return;
+
+    AppendUserMessage(input);
+    string response = _botEngine.GetBotResponse(input);
+    AppendBotMessage(response, Brushes.Cyan, true);
+    Speak(response);
+    UserInputTextBox.Clear();
+}
+private void txtInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) 
+{ 
+    if (e.Key == System.Windows.Input.Key.Enter) ProcessInput(); 
+}
+
+private void txtName_KeyDown(object sender, System.Windows.Input.KeyEventArgs e) 
+{ 
+    if (e.Key == System.Windows.Input.Key.Enter) btnStart_Click(sender, e); 
+}
+private void TopicRadio_Checked(object sender, RoutedEventArgs e) 
+{ 
+    if (sender is RadioButton rb && rb.IsChecked == true) 
+    { 
+        UserInputTextBox.Text = rb.Content.ToString(); 
+        ProcessInput(); 
+        rb.IsChecked = false; 
+    } 
+}
+private void ToggleChatControls(bool enable)
+{
+    UserInputTextBox.IsEnabled = enable;
+    SendButton.IsEnabled = enable;
+    ChatHistoryButton.IsEnabled = enable;
+    PhishingRadioButton.IsEnabled = enable;
+    PasswordRadioButton.IsEnabled = enable;
+    MFARadioButton.IsEnabled = enable;
+}
+private void ToggleChatControls(bool enable)
+{
+    UserInputTextBox.IsEnabled = enable;
+    SendButton.IsEnabled = enable;
+    ChatHistoryButton.IsEnabled = enable;
+    PhishingRadioButton.IsEnabled = enable;
+    PasswordRadioButton.IsEnabled = enable;
+    MFARadioButton.IsEnabled = enable;
+}
