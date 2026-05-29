@@ -242,3 +242,48 @@ private void ToggleChatControls(bool enable)
     PasswordRadioButton.IsEnabled = enable;
     MFARadioButton.IsEnabled = enable;
 }
+try
+{
+    _speechSynthesizer = new SpeechSynthesizer();
+    _speechSynthesizer.SetOutputToDefaultAudioDevice();
+}
+catch { _speechSynthesizer = null; }
+private void Speak(string text)
+{
+    if (_speechSynthesizer != null && !_isMuted)
+    {
+        try { _speechSynthesizer.SpeakAsync(text); } catch { }
+    }
+}
+private void btnSpeak_Click(object sender, RoutedEventArgs e)
+{
+    if (_speechSynthesizer != null)
+    {
+        if (_isMuted) _speechSynthesizer.Volume = 100;
+        else
+        {
+            _speechSynthesizer.SpeakAsyncCancelAll();
+            _speechSynthesizer.Volume = 0;
+        }
+        _isMuted = !_isMuted;
+    }
+}
+if (_isMuted)
+{
+    MuteToggleButton.Content = "Mute Voice";
+}
+else
+{
+    MuteToggleButton.Content = "Unmute Voice";
+}
+private void ProcessInput()
+{
+    // ... logic ...
+    _speechSynthesizer?.SpeakAsyncCancelAll();
+    Speak(response);
+}
+private void Speak(string text)
+{
+    if (_speechSynthesizer == null) return; // Silent fail if no device
+    try { _speechSynthesizer.SpeakAsync(text); } catch { }
+}
