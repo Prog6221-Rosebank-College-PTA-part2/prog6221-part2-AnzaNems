@@ -378,3 +378,11 @@ catch (Exception ex)
 }
 
 
+| Commit ID | Action | Description |
+| --- | --- | --- |
+| `INT-001` | **Init** | Link basic Click events for Send and Start buttons. |
+| `INT-002` | **Feature** | Implement 'Enter' key support for both Name Entry and Chat Input. |
+| `INT-003` | **Logic** | Add the `ProcessInput` workflow to bridge UI text and Bot Engine responses. |
+| `INT-004` | **Feature** | Create the `ToggleChatControls` method to manage UI state (Locked/Unlocked). |
+| `INT-005` | **Logic** | Implement automatic triggering of chat when a 'Quick Topic' is selected. |
+| `INT-006` | **Refactor** | Clean up Event Handlers and implement null-safe UI control access. |
