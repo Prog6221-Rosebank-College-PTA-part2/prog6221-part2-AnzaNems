@@ -422,3 +422,18 @@ catch (Exception ex)
 | `SEC-005` | **Security** | Implement XAML runtime loading safety to prevent script injection. |
 | `SEC-006` | **Refactor** | Final audit of null-safety across all modules to prevent runtime crashes. |
 | " |  |  |
+
+ Releases
+VersionDescriptionv1.0Part 1 — Console application with voice, ASCII art, basic responsesv2.0Part 2 — Full WPF GUI with keyword recognition, sentiment, memory
+
+🎥 Video Presentation
+
+Part 1: [YouTube Link — (https://youtu.be/Dokkpwtfp9c)]
+Part 2: [YouTube Link — add yours here]
+
+
+📚 References
+Pieterse, H. 2021. The Cyber Threat Landscape in South Africa: A 10-Year Review. The African Journal of Information and Communication, 28(28). Available at: https://www.scielo.org.za/scielo.php?pid=S2077-72132021000200003&script=sci_arttext [Accessed 16 February 2026].
+
+👤 Student Information
+FieldDetailsStudent NameAnzatshilidzi Nimrod Nemafukani Student Number ST10480934 ModulePROG6221 — Programming 2AInstitutionThe Independent Institute of Education (IIE)
