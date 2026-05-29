@@ -81,3 +81,86 @@ ST10480934
     <Button x:Name="ChatHistoryButton" Grid.Column="2" Content="Chat History" Width="100" Margin="0,0,5,0" Style="{StaticResource ModernButtonStyle}" Click="ChatHistoryButton_Click"/>
     <Button x:Name="MuteToggleButton" Grid.Column="3" Content="Mute Voice" Width="100" Style="{StaticResource ModernButtonStyle}" Click="btnSpeak_Click"/>
 </Grid>
+public class CyberTopic
+{
+    public string Name { get; set; } = string.Empty;
+    public List<string> Steps { get; set; } = new List<string>( );
+    public List<string> Tips { get; set; } = new List<string>();
+    public List<string> Prevention { get; set; } = new List<string>();
+}
+
+public class ChatMessage
+{
+    public string Sender { get; set; } = string.Empty;
+    public string Message { get; set; } = string.Empty;
+    public DateTime Timestamp { get; set; }
+}
+public CyberBotEngine()
+{
+    _knowledgeBase = new Dictionary<string, CyberTopic>(StringComparer.OrdinalIgnoreCase);
+    InitializeKnowledgeBase();
+}
+
+private void AddTopic(string key, string name, string[] steps, string[] tips, string[] prevention)
+{
+    _knowledgeBase[key] = new CyberTopic { 
+        Name = name, 
+        Steps = steps.ToList(), 
+        Tips = tips.ToList(), 
+        Prevention = prevention.ToList() 
+    };
+}
+public CyberBotEngine()
+{
+    _knowledgeBase = new Dictionary<string, CyberTopic>(StringComparer.OrdinalIgnoreCase);
+    InitializeKnowledgeBase();
+}
+
+private void AddTopic(string key, string name, string[] steps, string[] tips, string[] prevention)
+{
+    _knowledgeBase[key] = new CyberTopic { 
+        Name = name, 
+        Steps = steps.ToList(), 
+        Tips = tips.ToList(), 
+        Prevention = prevention.ToList() 
+    };
+}
+public string GetBotResponse(string input)
+{
+    string lowerInput = input.ToLower();
+    _history.Add(new ChatMessage { Sender = UserName ?? "User", Message = input, Timestamp = DateTime.Now });
+
+    foreach (var topic in _knowledgeBase)
+    {
+        if (lowerInput.Contains(topic.Key))
+        {
+            _currentTopicKey = topic.Key;
+            return $"I see you're interested in {topic.Value.Name}. {topic.Value.Steps[0]} You can ask for 'tips', 'prevention', or 'more' information on this!";
+        }
+    }
+    return "I'm not sure I understand. Try asking about VPNs, Phishing, or Passwords.";
+}
+AddTopic("vpn", "VPN (Virtual Private Network)", 
+    new[] { "A VPN creates a private, encrypted 'tunnel' across a public network." }, 
+    new[] { "Tip: Use a VPN whenever you connect to public Wi-Fi at cafes or airports." },
+    new[] { "Prevention: A VPN prevents 'Man-in-the-Middle' attacks on public networks." });
+    if (!string.IsNullOrEmpty(_currentTopicKey))
+{
+    var topic = _knowledgeBase[_currentTopicKey];
+    if (lowerInput.Contains("tip")) return topic.Tips[_random.Next(topic.Tips.Count)];
+    if (lowerInput.Contains("prevent")) return topic.Prevention[_random.Next(topic.Prevention.Count)];
+    if (lowerInput.Contains("more") || lowerInput.Contains("next"))
+    {
+        var allInfo = topic.Steps.Concat(topic.Tips).Concat(topic.Prevention).ToList();
+        return allInfo[_random.Next(allInfo.Count)];
+    }
+}
+public string GetFullChatHistory()
+{
+    return string.Join("\n", _history.Select(h => $"[{h.Timestamp:HH:mm:ss}] {h.Sender}: {h.Message}"));
+}
+
+public void LogMessage(string sender, string message)
+{
+    _history.Add(new ChatMessage { Sender = sender, Message = message, Timestamp = DateTime.Now });
+}
