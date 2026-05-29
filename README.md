@@ -395,3 +395,12 @@ catch (Exception ex)
 | `LOG-004` | **Feature** | Add support for "contextual" follow-up questions (e.g., "tell me more"). |
 | `LOG-005` | **Expand** | Integrate detailed 'Tips' and 'Prevention' fields into the `CyberTopic` model. |
 | `LOG-006` | **Optimize** | Implement randomized response selection to avoid repetitive bot answers. |
+
+| Commit ID | Action | Description |
+| --- | --- | --- |
+| `VOC-001` | **Init** | Integrate `System.Speech` and initialize the `SpeechSynthesizer`. |
+| `VOC-002` | **Feature** | Implement basic `Speak()` method for bot responses. |
+| `VOC-003` | **UI** | Add the 'Mute/Unmute' toggle button to the main interface. |
+| `VOC-004` | **Logic** | Implement 'Mute' state persistence during the session. |
+| `VOC-005` | **Optimize** | Add `SpeakAsyncCancelAll()` to prevent voice overlapping on fast inputs. |
+| `VOC-006` | **Fix** | Implement error handling for systems without audio output devices. |
