@@ -386,3 +386,12 @@ catch (Exception ex)
 | `UI-004` | **Feature** | Design the 'Name Entry' overlay with validation messaging support. |
 | `UI-005` | **Layout** | Implement the 'Quick Topics' RadioButton group for easy navigation. |
 | `UI-006` | **Refactor** | Optimize XAML by moving styles to Resources and cleaning up control naming. |
+
+| Commit ID | Action | Description |
+| --- | --- | --- |
+| `LOG-001` | **Init** | Define the `CyberBotEngine` class and basic `ChatMessage` structure. |
+| `LOG-002` | **Data** | Implement the `CyberTopic` class and initial Knowledge Base dictionary. |
+| `LOG-003` | **Logic** | Create the `GetBotResponse` method with basic keyword matching. |
+| `LOG-004` | **Feature** | Add support for "contextual" follow-up questions (e.g., "tell me more"). |
+| `LOG-005` | **Expand** | Integrate detailed 'Tips' and 'Prevention' fields into the `CyberTopic` model. |
+| `LOG-006` | **Optimize** | Implement randomized response selection to avoid repetitive bot answers. |
