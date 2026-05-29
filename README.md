@@ -336,8 +336,45 @@ public string GetFullChatHistory()
 {
     return string.Join("\n", _history.Select(h => $"[{h.Timestamp:HH:mm:ss}] {h.Sender}: {h.Message}"));
 }
+if (string.IsNullOrWhiteSpace(name) || !Regex.IsMatch(name, "^[a-zA-Z][a-zA-Z ]*$"))
+{
+    NameErrorTextBlock.Text = "Please enter a valid name (letters only).";
+    return;
+}
+if (NameErrorTextBlock != null) 
+{
+    NameErrorTextBlock.Text = "Please enter a valid name (letters only).";
+    NameErrorTextBlock.Visibility = Visibility.Visible;
+}
 private void AppendBotMessage(string message, SolidColorBrush color, bool log)
 {
     // ... append logic ...
     ChatDisplay.ScrollToEnd();
 }
+string input = UserInputTextBox.Text.Trim();
+if (string.IsNullOrWhiteSpace(input)) return;
+if (NameErrorTextBlock != null) 
+{
+    NameErrorTextBlock.Text = "Please enter a valid name (letters only).";
+    NameErrorTextBlock.Visibility = Visibility.Visible;
+}
+string input = UserInputTextBox.Text.Trim();
+if (string.IsNullOrWhiteSpace(input)) return;
+Dispatcher.Invoke(() => {
+    // UI Updates here
+    ChatDisplay.ScrollToEnd();
+});
+public string Name { get; set; } = string.Empty;
+public List<string> Steps { get; set; } = new List<string>();
+public List<string> Tips { get; set; } = new List<string>();
+try
+{
+    InitializeComponent();
+}
+catch (Exception ex)
+{
+    MessageBox.Show("Fatal Error: " + ex.Message);
+    Application.Current.Shutdown();
+}
+
+
