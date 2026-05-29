@@ -380,9 +380,9 @@ catch (Exception ex)
 
 | Commit ID | Action | Description |
 | --- | --- | --- |
-| `INT-001` | **Init** | Link basic Click events for Send and Start buttons. |
-| `INT-002` | **Feature** | Implement 'Enter' key support for both Name Entry and Chat Input. |
-| `INT-003` | **Logic** | Add the `ProcessInput` workflow to bridge UI text and Bot Engine responses. |
-| `INT-004` | **Feature** | Create the `ToggleChatControls` method to manage UI state (Locked/Unlocked). |
-| `INT-005` | **Logic** | Implement automatic triggering of chat when a 'Quick Topic' is selected. |
-| `INT-006` | **Refactor** | Clean up Event Handlers and implement null-safe UI control access. |
+| `UI-001` | **Init** | Create basic WPF Window structure with Grid layout. |
+| `UI-002` | **Style** | Implement 'Modern' styles for Buttons, TextBoxes, and RadioButtons (Cyan/Dark theme). |
+| `UI-003` | **Asset** | Add ASCII Art banner and versioning info to the header section. |
+| `UI-004` | **Feature** | Design the 'Name Entry' overlay with validation messaging support. |
+| `UI-005` | **Layout** | Implement the 'Quick Topics' RadioButton group for easy navigation. |
+| `UI-006` | **Refactor** | Optimize XAML by moving styles to Resources and cleaning up control naming. |
