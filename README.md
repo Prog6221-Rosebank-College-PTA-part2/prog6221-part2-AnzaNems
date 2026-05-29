@@ -404,3 +404,12 @@ catch (Exception ex)
 | `VOC-004` | **Logic** | Implement 'Mute' state persistence during the session. |
 | `VOC-005` | **Optimize** | Add `SpeakAsyncCancelAll()` to prevent voice overlapping on fast inputs. |
 | `VOC-006` | **Fix** | Implement error handling for systems without audio output devices. |
+
+| Commit ID | Action | Description |
+| --- | --- | --- |
+| `SES-001` | **Init** | Create the `_history` List to store all session messages. |
+| `SES-002` | **Logic** | Implement the `LogMessage` method with automatic timestamping. |
+| `SES-003` | **UI** | Design the 'Chat History' popup window with read-only view. |
+| `SES-004` | **Feature** | Implement the `GetFullChatHistory` formatter for the final report. |
+| `SES-005` | **Logic** | Add User Name integration into the history logs for personalization. |
+| `SES-006` | **Style** | Apply 'Consolas' font and dark theme to the History Report window. |
