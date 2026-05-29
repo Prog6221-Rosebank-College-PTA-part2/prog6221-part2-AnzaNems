@@ -1,7 +1,9 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/Apa4hIya)
 ST10480934
-🔒 CyberGuard — Cybersecurity Awareness Chatbot
-Show Image
+
+CyberGuard — Cybersecurity Awareness Chatbot
+<img width="1295" height="862" alt="image" src="https://github.com/user-attachments/assets/a050cef6-438b-4aff-afb5-5e6955df76d5" />
+
 A WPF-based cybersecurity awareness chatbot built in C# for the PROG6221 Programming 2A module at The Independent Institute of Education (IIE).
 
 📋 Project Overview
