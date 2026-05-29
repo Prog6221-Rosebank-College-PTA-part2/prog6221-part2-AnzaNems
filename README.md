@@ -93,3 +93,20 @@ Click Chat History to see a summary of your session
 🔁 Sentiment Detection
 The chatbot adjusts its tone based on how you phrase your message:
 You say...Bot responds with..."I'm worried about phishing"Empathetic intro + tip"I'm curious about malware"Enthusiastic intro + tip"I'm frustrated with passwords"Calm, understanding intro + tip
+🔧 CI/CD — GitHub Actions
+This project uses GitHub Actions for Continuous Integration. On every push to main or master, the workflow:
+
+Checks out the code
+Sets up .NET 8.0
+Restores NuGet dependencies
+Builds the project in Release mode
+
+✅ CI Screenshot
+<!-- Replace the line below with your actual screenshot after your first push -->
+
+Add a screenshot of your green CI checkmark from the Actions tab here.
+
+<img width="800" height="323" alt="image" src="https://github.com/user-attachments/assets/83afb1c0-1a22-4cd8-b40c-67a2369cce87" />
+
+
+
