@@ -413,3 +413,12 @@ catch (Exception ex)
 | `SES-004` | **Feature** | Implement the `GetFullChatHistory` formatter for the final report. |
 | `SES-005` | **Logic** | Add User Name integration into the history logs for personalization. |
 | `SES-006` | **Style** | Apply 'Consolas' font and dark theme to the History Report window. |
+| Commit ID | Action | Description |
+| --- | --- | --- |
+| `SEC-001` | **Init** | Implement basic null checks for all UI element references. |
+| `SEC-002` | **Logic** | Add Regex validation for the User Name input (Letters only). |
+| `SEC-003` | **Logic** | Implement whitespace stripping and empty input prevention for chat. |
+| `SEC-004` | **Feature** | Add 'NameError' visual feedback for invalid user registration. |
+| `SEC-005` | **Security** | Implement XAML runtime loading safety to prevent script injection. |
+| `SEC-006` | **Refactor** | Final audit of null-safety across all modules to prevent runtime crashes. |
+| " |  |  |
